@@ -26,6 +26,9 @@
           <li class="nav-item">
             <a class="nav-link disabled" href="/services">Services</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="/posts">Blog</a>
+          </li>
         </ul>
       </div>
   </div>
