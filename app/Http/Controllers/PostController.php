@@ -26,7 +26,7 @@ class PostController extends Controller
 
         // Pagination
         $posts =  Post::orderBy('title', 'asc')->paginate(1);
-        
+
         return view('posts.index')->with('posts', $posts);
     }
 
@@ -37,7 +37,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
