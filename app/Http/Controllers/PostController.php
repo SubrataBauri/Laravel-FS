@@ -17,7 +17,7 @@ class PostController extends Controller
     {
         // Eloquent -> object relational mapper
         //$posts =  Post::all();
-        $posts =  Post::orderBy('title', 'asc')->get();
+        //$posts =  Post::orderBy('title', 'asc')->get();
         //$posts =  Post::orderBy('title', 'asc')->take(1)->get();
         // return Post::where('title', 'Post Two')->get();
 
@@ -25,7 +25,7 @@ class PostController extends Controller
         //$posts = DB::select('SELECT * FROM posts');
 
         // Pagination
-        $posts =  Post::orderBy('title', 'asc')->paginate(1);
+        $posts =  Post::orderBy('created_at', 'desc')->paginate(10);
 
         return view('posts.index')->with('posts', $posts);
     }
@@ -52,6 +52,14 @@ class PostController extends Controller
             'title' => 'required',
             'body' => 'required'
         ]);
+
+        // Create post
+        $post = new Post;
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->save();
+
+        return redirect('/posts')->with('success', 'Post Created');
     }
 
     /**
