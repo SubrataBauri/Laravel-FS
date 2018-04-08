@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use DB;
 
 class PostController extends Controller
 {
@@ -15,8 +16,17 @@ class PostController extends Controller
     public function index()
     {
         // Eloquent -> object relational mapper
+        //$posts =  Post::all();
         $posts =  Post::orderBy('title', 'asc')->get();
+        //$posts =  Post::orderBy('title', 'asc')->take(1)->get();
         // return Post::where('title', 'Post Two')->get();
+
+        // DB select
+        //$posts = DB::select('SELECT * FROM posts');
+
+        // Pagination
+        $posts =  Post::orderBy('title', 'asc')->paginate(1);
+        
         return view('posts.index')->with('posts', $posts);
     }
 
