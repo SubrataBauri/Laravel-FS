@@ -179,6 +179,9 @@ return [
 
         // laravelcollective/html
         Collective\Html\HtmlServiceProvider::class,
+
+        // Post editor
+        Unisharp\Ckeditor\ServiceProvider::class,
     ],
 
     /*
